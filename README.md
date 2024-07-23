@@ -1,9 +1,9 @@
-# Action to upload files to Google Drive
+# Action to upload folders to Google Drive
 
 > [!NOTE]
 > This action only works with a [Google Service Account](https://cloud.google.com/iam/docs/service-account-overview).
 
-This is a github action to upload a complete folder with its sub-folders (folder-tree) to Google Drive.
+This is a github action to upload a complete folder including its sub-folders (folder-tree) to Google Drive.
 Existing files will be overwritten.
 
 ## Inputs

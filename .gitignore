@@ -2,6 +2,9 @@
 __pycache__/
 .venv
 
+credentials.json
+local_upload.sh
+
 ### Vim ###
 # Swap
 [._]*.s[a-v][a-z]

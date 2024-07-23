@@ -29,12 +29,15 @@ runs:
   using: 'composite'
   steps:
     - name: Install Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.12'
-    - name: Install Dependencies
-      run: pip install -r requirements.txt
+    - name: Install dependencies
       shell: bash
+      run: |
+        python3 -m venv .venv
+        source .venv/bin/activate
+        python3 -m pip install -r requirements.txt
     - name: Perform upload
       id: upload-files-to-google-drive
       shell: bash

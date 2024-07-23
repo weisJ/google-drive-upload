@@ -1,0 +1,45 @@
+name: 'Google Drive Upload Action'
+description: 'Upload files to Google Drive'
+inputs:
+  input:
+    description: 'Input directory to upload'
+    required: true
+  filter:
+    description: 'Filter to apply to files'
+    required: false
+    default: '*'
+  output:
+    description: 'Output directory to place uploaded files'
+    required: false
+    default: ''
+  target:
+    description: 'ID of the target Google Drive folder'
+    required: true
+  credentials:
+    description: 'base64 encoded credentials.json file'
+    required: true
+  purgeStale:
+    description: 'Purge stale files in the target folder'
+    required: false
+    default: "false"
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+    - name: Install Dependencies
+      run: pip install -r requirements.txt
+      shell: bash
+    - name: Perform upload
+      id: upload-files-to-google-drive
+      shell: bash
+      run: |
+        python3 google_drive_upload.py \
+          --input "${{ inputs.input }}" \
+          --filter "${{ inputs.filter }}" \
+          --output "${{ inputs.output }}" \
+          --target "${{ inputs.target }}" \
+          --credentials ${{ inputs.credentials }} \
+          --purge-stale=${{ inputs.purgeStale }}

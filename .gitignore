@@ -1,0 +1,39 @@
+.mypy_cache/
+__pycache__/
+.venv
+
+### Vim ###
+# Swap
+[._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+
+### VisualStudioCode ###
+.vscode/*
+# Local History for Visual Studio Code
+.history/
+# Built Visual Studio Code Extensions
+*.vsix
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+### OS-Specific marker files ###
+**/desktop.ini
+**/.DS_Store

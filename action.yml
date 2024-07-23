@@ -1,5 +1,8 @@
 name: 'Google Drive Folder Upload'
 description: 'Upload folders to Google Drive using a service account'
+branding:
+  icon: 'upload'
+  color: 'green'
 inputs:
   input:
     description: 'Input directory to upload'

@@ -42,6 +42,7 @@ runs:
       id: upload-files-to-google-drive
       shell: bash
       run: |
+        source ${GITHUB_ACTION_PATH}/.venv/bin/activate
         python3 ${GITHUB_ACTION_PATH}/google_drive_upload.py \
           --input "${{ inputs.input }}" \
           --filter "${{ inputs.filter }}" \

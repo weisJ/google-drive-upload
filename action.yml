@@ -1,5 +1,5 @@
-name: 'Google Drive Upload Action'
-description: 'Upload files to Google Drive'
+name: 'Google Drive Folder Upload'
+description: 'Upload folders to Google Drive using a service account'
 inputs:
   input:
     description: 'Input directory to upload'

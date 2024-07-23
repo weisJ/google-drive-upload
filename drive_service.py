@@ -114,8 +114,6 @@ class DriveService:
         return root
 
     def ensure_path(self, path: Path, base: DirInfo) -> DirInfo:
-        if not path.is_dir():
-            raise ValueError(f"Path {path} is not a directory")
         current = base
         for part in path.parts:
             results = (

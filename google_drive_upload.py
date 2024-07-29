@@ -25,6 +25,13 @@ def load_credentials(credentials_arg: str) -> dict:
         return json.load(open(credentials_arg))
     return decode_credentials(credentials_arg)
 
+def safe_chdir(path: Path | str) -> None:
+    try:
+        os.chdir(path)
+    except Exception as e:
+        print(f"::error Failed to change directory to {path}: {e}")
+        sys.exit(1)
+
 def get_upload_targets(
     driveService: DriveService,
     input_folder: Path,
@@ -32,9 +39,9 @@ def get_upload_targets(
     output_folder: DirInfo,
 ) -> list[UploadTarget]:
     cwd = os.getcwd()
-    os.chdir(input_folder)
+    safe_chdir(input_folder)
     input_files = sorted(f for f in Path("./").rglob(globFilter) if f.is_file())
-    os.chdir(cwd)
+    safe_chdir(cwd)
     return [
         UploadTarget(
             path=f,

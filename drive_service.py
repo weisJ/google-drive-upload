@@ -86,6 +86,15 @@ class DriveService:
             query=f"'{self.service_account_mail}' in owners and mimeType != '{FOLDER_MIME_TYPE}'",
         )
 
+    def is_owned_by_service(self, fileOrFolder: FileInfo | DirInfo) -> bool:
+        results = (
+            self.service.files()
+            .get(fileId=fileOrFolder.id, fields="owners")
+            .execute(num_retries=RETRIES)
+        )
+        owners = results.get("owners", [])
+        return len(owners) == 1 and owners[0]["emailAddress"] == self.service_account_mail
+
     def list_folders_in_folder(self, folder: DirInfo) -> list[DirInfo]:
         return [
             DirInfo(f.path, f.id, f.parent)

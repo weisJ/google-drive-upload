@@ -62,7 +62,7 @@ def cleanup_folders(driveService: DriveService, folder: FolderTree) -> None:
     def do_clean(folder: FolderTree) -> None:
         for child in folder.children.values():
             do_clean(child)
-        if folder.dir and driveService.is_folder_empty(folder.dir):
+        if folder.dir and driveService.is_folder_empty(folder.dir) and driveService.is_owned_by_service(folder.dir):
             print(f"Delete empty folder {folder.dir.path} ({folder.dir.id})")
             driveService.delete(folder.dir)
             print(f"    ==> Done")
